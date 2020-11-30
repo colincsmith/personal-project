@@ -1,0 +1,45 @@
+.nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    background-color: rgb(115, 196, 211);
+    width: 100vw;
+    height: 10vh;
+}
+
+.links{
+    flex-direction: row;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100vw;
+    color: black;
+}
+
+.login-link{
+    background-color: white;
+    border-style: solid;
+    padding: 5px;
+}
+
+.your-feed{
+    background-color: white;
+    border-style: solid;
+    padding: 5px;
+}
+
+.post-review{
+    background-color: white;
+    border-style: solid;
+    padding: 5px;
+}
+
+.your-reviews{
+    background-color: white;
+    border-style: solid;
+    padding: 5px;
+}
