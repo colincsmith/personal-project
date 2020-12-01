@@ -1,11 +1,14 @@
 body{
     height: 100vh;
-    width: 100%;
+    width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: rgb(179, 179, 179);
-    background-image: url('https://kalumatravel.co.uk/wp-content/uploads/2017/09/Snow.jpg');
+    background-image: url('https://mmlust.files.wordpress.com/2013/12/snowfall-at-night-feature1.jpg');
+    object-fit: cover;
+    background-size: 100%, 100%;
+    background-repeat: no-repeat;
 }
 
 .login{
@@ -14,41 +17,83 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(115, 196, 211);
+    background-color: rgba(0, 0, 0, 0);
     flex-direction: column;
     border-radius: 10%;
-    border-style: dotted; color: white;
     border-width: 5px;
+    box-shadow: 0px 5px 5px 0px whitesmoke;
+    transition: 1s;
+}
+
+.login:hover{
+    background-color: rgb(78, 151, 118);
+    box-shadow: 0px 15px 15px 0px whitesmoke;
 }
 
 .greeting{
-    width: 40px;
-    font-family: 'Courier New', monospace;
+    width: 100%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     flex-direction: column;
-    color: black;
+    color: white;
 }
 
 .login-button{
-    background-color: black;
-    color: white;
-    font-family: 'Impact', fantasy;
+    background-color: white;
+    color: black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    height: 40px;
+    width: 70px;
+    transition: 0.3s;
 }
 
 .login-button:hover{
-    background-color: rgb(179, 179, 179);
+    border-radius: 40%;
 }
 
 .register-button{
     background-color: white;
     color: black;
-    font-family: 'Impact', fantasy;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    height: 40px;
+    width: 80px;
+    transition: 0.3s;
 }
 
 .register-button:hover{
-    background-color:rgb(115, 196, 211);
+    border-radius: 40%;
 }
 
 .buttons{
     display: flex;
     justify-content: space-between;
+}
+
+.username-input[type=text] {
+    width: 45%;
+    transition: width 0.4s ease-in-out;
+    margin-top: 60px;
+    height: 50px;
+    font-size: large;
+}
+  
+.username-input[type=text]:focus {
+    width: 60%;
+}
+
+.password-input[type=password] {
+    width: 45%;
+    transition: width 0.4s ease-in-out;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    height: 40px;
+    font-size: large;
+}
+  
+.password-input[type=password]:focus {
+    width: 60%;
+}
+
+.skier-logo{
+    height: 100px;
+    width: 100px;
 }

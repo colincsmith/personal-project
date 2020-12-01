@@ -9,8 +9,8 @@ CREATE TABLE posts
 (
 post_id SERIAL PRIMARY KEY,
 img TEXT, 
-resort_name VARCHAR(100),
-location TEXT,
+ski_name VARCHAR(100),
+content VARCHAR(400),
 user_id INT REFERENCES users(user_id)
 );
 

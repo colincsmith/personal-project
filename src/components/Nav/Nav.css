@@ -6,7 +6,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    background-color: rgb(115, 196, 211);
+    background-color: rgb(115, 253, 191);
     width: 100vw;
     height: 10vh;
 }
@@ -21,25 +21,33 @@
 }
 
 .login-link{
-    background-color: white;
-    border-style: solid;
+    border-style: none;
+    font-size: large;
+    font-weight: bold;
     padding: 5px;
+    color: black;
 }
 
 .your-feed{
-    background-color: white;
-    border-style: solid;
+    border-style: none;
+    font-size: large;
+    font-weight: bold;
     padding: 5px;
+    color: black;
 }
 
 .post-review{
-    background-color: white;
-    border-style: solid;
+    border-style: none;
+    font-size: large;
+    font-weight: bold;
     padding: 5px;
+    color: black;
 }
 
 .your-reviews{
-    background-color: white;
-    border-style: solid;
+    border-style: none;
+    font-size: large;
+    font-weight: bold;
     padding: 5px;
+    color: black;
 }
