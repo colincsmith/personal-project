@@ -1,0 +1,50 @@
+.post{
+    background-color: black;
+    height: 450px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+    border-radius: 5%;
+}
+
+.post:hover{
+    background-color: rgba(245, 245, 245, 0);
+}
+
+.new-post{
+    background-color: rgba(115, 253, 191, 0.568);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    position: absolute;
+    width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 5%;
+    transition: 0.5s;
+}
+
+.new-post:hover{
+    background-color: rgb(115, 253, 191);
+}
+
+.post-content{
+    color: black;
+}
+
+.post-button{
+    width: 60%;
+    background-color: white;
+    font-weight: bolder;
+}
+
+.post-button:hover{
+    background-color: black;
+    color: white;
+}
+
+.content-input{
+    height: 40px;
+}
