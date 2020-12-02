@@ -52,7 +52,7 @@ class Auth extends Component{
         return(
             <div className='login'>
                 <div className='login-inside'>
-                    <h2 className='greeting'>Rate Your Planks</h2>
+                    <h3 className='greeting'>Rate Your Planks</h3>
                     <div>
                         <input className='username-input' onChange={this.handleUsername} type='text' placeholder='Username...'/>
                     </div>
