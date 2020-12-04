@@ -6,16 +6,8 @@ class Feed extends Component{
         super()
 
         this.state = {
-            searchInput: '',
             posts: [],
-            myPosts: true
         }
-    }
-
-    handleSearchInput = (e) => {
-        this.setState({
-            searchInput: e.target.value
-        })
     }
 
     handleSearch = () => {
@@ -48,7 +40,8 @@ class Feed extends Component{
 
     getAllPosts = async () => {
         try{
-            const posts = await axios.get(`/feed/posts?search=${this.state.searchInput}&userposts=${this.state.myPosts}`)
+            const posts = await axios.get(`/feed/posts`)
+            // console.log(posts.data)
             this.setState({
                 posts: posts.data
             })
@@ -58,15 +51,18 @@ class Feed extends Component{
     }
 
     render(){
+        const mappedPosts = this.state.posts.map((post, index) => {
+            return(
+            <div className='post-container' key={index} >
+                <p>{post.img}</p>
+                <h1>Name of Skis: {post.ski_name}</h1>
+                <h2>Thoughts: {post.content}</h2>
+            </div>
+            )
+        })
         return(
             <div>
-                <div>
-                    <div>
-                        <input onChange={this.handleSearchInput} type='text' value={this.state.searchInput} />
-                        <button onClick={this.handleSearch}>Search for Post</button>
-                        <button onClick={this.handleReset}>Clear</button>
-                    </div>
-                </div>
+                {mappedPosts}
             </div>
         )
     }

@@ -1,14 +1,14 @@
 module.exports = {
     getAllPosts: async (req, res) => {
         const db = req.app.get("db")
-        const posts = await db.get_all_puns
+        const posts = await db.get_all_posts()
         res.status(200).send(posts)
     },
 
     getOnePost: async (req, res) => {
         const db = req.app.get("db")
         const {id} = req.params
-        const [post] = await db.posts.get_one_pun(+id)
+        const [post] = await db.posts.get_one_post(+id)
         if(post){
             res.status(200).send(post)
         } else {
