@@ -6,9 +6,12 @@
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    background-color: rgb(115, 253, 191);
+    background-image:linear-gradient(rgb(115, 253, 191), rgb(255, 255, 255)) ;
     width: 100vw;
     height: 10vh;
+    border-bottom-color: black;
+    border-bottom-style: solid;
+    border-bottom-width: 3px;
 }
 
 .links{

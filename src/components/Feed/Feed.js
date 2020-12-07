@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import axios from 'axios'
+import './Feed.css'
 
 class Feed extends Component{
     constructor(){
@@ -14,29 +15,11 @@ class Feed extends Component{
         this.getAllPosts()
     }
 
-    handleReset = () => {
-        this.setState({
-            searchInput: ""
-        })
-
-        this.getAllPosts()
-    }
-
-    toggleMyPosts = () => {
-        this.setState({
-            myPosts: !this.state.myPosts
-        })
-    }
-
-    componentDidUpdate(prevProps, prevState){
-        if(prevState.myPosts !== this.state.myPosts){
-            this.getAllPosts()
-        }
-    }
-
     componentDidMount(){
         this.getAllPosts()
     }
+
+    
 
     getAllPosts = async () => {
         try{
@@ -53,10 +36,14 @@ class Feed extends Component{
     render(){
         const mappedPosts = this.state.posts.map((post, index) => {
             return(
-            <div className='post-container' key={index} >
-                <p>{post.img}</p>
-                <h1>Name of Skis: {post.ski_name}</h1>
-                <h2>Thoughts: {post.content}</h2>
+            <div className='container'>
+                <div className='post-container' key={index} >
+                    <img className='post-image' alt='skis' src={post.img}/>
+                    <h1 style={{color: 'crimson'}} >Name of Skis: </h1>
+                    <h2> {post.ski_name}</h2>
+                    <h2 style={{color: 'crimson'}} >Thoughts </h2>
+                    <h3>{post.content}</h3>
+                </div>
             </div>
             )
         })

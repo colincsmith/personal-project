@@ -5,8 +5,7 @@ const massive = require('massive')
 const session = require('express-session')
 
 const {SESSION_SECRET, SERVER_PORT, CONNECTION_STRING} = process.env
-const auth = require('./controllers/authController')
-const post = require('./controllers/postController')
+const ctrl = require('./controllers/controller')
 const { checkUser } = require('./controllers/middleware')
 
 const app = express()
@@ -33,16 +32,16 @@ massive({
 }).catch(err => console.log(err))
 
 // user endpoints
-app.get('/auth/user', checkUser, auth.getUser)
-app.post('/auth/register', auth.register)
-app.post('/auth/login', auth.login)
-app.post('/auth/logout', auth.logout)
+app.get('/auth/user', checkUser, ctrl.getUser)
+app.post('/auth/register', ctrl.register)
+app.post('/auth/login', ctrl.login)
+app.post('/auth/logout', ctrl.logout)
 
 // post endpoints
-app.get('/feed/posts', post.getAllPosts)
-app.get('/feed/post/:id', post.getOnePost)
-app.post('/post/form', checkUser, post.addPost)
-app.put('/post/:id', checkUser, post.editPost)
-app.delete('/post/:id', checkUser, post.deletePost)
+app.get('/feed/posts', ctrl.getAllPosts)
+app.get('/feed/post', ctrl.getOnePost)
+app.post('/post/form', ctrl.addPost)
+app.put('/post/:id', ctrl.editPost)
+app.delete('/post/:id', ctrl.deletePost)
 
-app.listen(SERVER_PORT, () => console.log(`server listening on port ${SERVER_PORT} mr. smith`))
+app.listen(SERVER_PORT, () => console.log(`server listening on port ${SERVER_PORT}`))

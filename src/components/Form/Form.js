@@ -13,14 +13,6 @@ class Form extends Component {
         }
     }
 
-    // componentDidUpdate(){
-    //     if(this.state.ski_name === ""){
-    //         this.setState({
-    //             ski_name: "New Ski Review"
-    //         })
-    //     }
-    // }
-
     handleChange = (e) => {
         this.setState({
             [e.target.name]: e.target.value
@@ -44,11 +36,11 @@ class Form extends Component {
                     <h1>New Review</h1>
                     <div className="post-content">
                         <h4>Image URL: </h4>
-                        <input onChange={this.handleChange}/>
+                        <input name='img' onChange={e => this.handleChange(e)}/>
                         <h5>Name of Skis: </h5>
-                        <input onChange={this.handleChange}/>
+                        <input name='ski_name' onChange={e => this.handleChange(e)}/>
                         <h5>Content: </h5>
-                        <input className="content-input" onChange={this.handleChange}/>
+                        <input name='content' className="content-input" onChange={e => this.handleChange(e)}/>
                     </div>
                     <button className='post-button' onClick={this.addPost}>Post</button>
                 </div>
