@@ -29,7 +29,7 @@ body{
     box-shadow: 10px 15px 10px 5px rgba(0, 0, 0, 0.425);
 }
 
-.greeting{
+.auth-greeting{
     width: 100%;
     font-size: 35px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -96,9 +96,4 @@ body{
   
 .password-input[type=password]:focus {
     width: 60%;
-}
-
-.skier-logo{
-    height: 15vh;
-    width: 30vw;
 }

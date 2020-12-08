@@ -57,6 +57,15 @@ module.exports = {
         res.sendStatus(200)
     },
 
+    getMe: async (req, res) => {
+        const {user_id} = req.session.user
+
+        const db = req.app.get('db')
+
+        const me = await db.get_me([user_id])
+        return res.status(200).send(me)
+    },
+
     //#post controller
     getAllPosts: async (req, res) => {
         const db = req.app.get("db")

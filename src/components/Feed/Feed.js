@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import './Feed.css'
+import {updateUser} from '../../redux/reducer'
+import { connect } from 'react-redux'
 
 class Feed extends Component{
     constructor(){
@@ -8,6 +10,15 @@ class Feed extends Component{
 
         this.state = {
             posts: [],
+        }
+    }
+
+    getMe = async () => {
+        try{
+            const me = await axios.get('/auth/me')
+            this.props.updateUser(me.data[0].username)
+        } catch(err){
+            alert(err)
         }
     }
 
@@ -50,10 +61,20 @@ class Feed extends Component{
         return(
             <div>
                 {mappedPosts}
+                <div className='greeting-container'>
+                <h2 className='greeting'> Take a look at your feed, {this.props.username}!</h2>
+                </div>
             </div>
+            
         )
     }
 }
 
+function mapStateToProps(state){
+    return{
+        username: state.username
+    }
+}
 
-export default Feed
+
+export default connect(mapStateToProps, {updateUser})(Feed)

@@ -36,6 +36,7 @@ app.get('/auth/user', checkUser, ctrl.getUser)
 app.post('/auth/register', ctrl.register)
 app.post('/auth/login', ctrl.login)
 app.post('/auth/logout', ctrl.logout)
+app.get('/auth/me', ctrl.getMe)
 
 // post endpoints
 app.get('/feed/posts', ctrl.getAllPosts)

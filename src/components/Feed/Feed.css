@@ -15,3 +15,19 @@
     border-width: 10px;
     border-color: rgb(207, 34, 3);
 }
+
+.greeting{
+    color: white;
+}
+
+.greeting-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    height: 60px;
+    width: 400px;
+    position: fixed;
+    right: 5px;
+    bottom: 5px;
+}
