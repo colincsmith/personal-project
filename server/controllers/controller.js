@@ -99,29 +99,9 @@ module.exports = {
     },
 
     editPost: async (req, res) => {
-        const db = req.app.get('db')
-        const {id} = req.params
-        const {ski_name, content} = req.body
-
-        try{
-            const posts = await db.edit_post([id, ski_name, content])
-            res.status(200).send(posts)
-        } catch(err){
-            console.log("cannot edit post", err)
-            res.sendStatus(500)
-        }
+        
     },
 
     deletePost: async (req, res) => {
-        const db = req.app.get('db')
-        const {id} = req.params
-
-        try{
-            const posts = await db.delete_post(+id)
-            res.status(200).send(posts)
-        } catch(err){
-            console.log('could not delete this post')
-            res.sendStatus(500)
-        }
     }
 }

@@ -62,7 +62,7 @@ class Feed extends Component{
             <div>
                 {mappedPosts}
                 <div className='greeting-container'>
-                <h2 className='greeting'> Take a look at your feed, {this.props.username}!</h2>
+                <h3 className='greeting'> Take a look at your feed, {this.props.username}!</h3>
                 </div>
             </div>
             

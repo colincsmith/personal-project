@@ -1,8 +1,7 @@
-UPDATE puns
+UPDATE posts
 SET 
-ski_name = $2,
-content = $3
+content = $2
 WHERE
-pun_id = $1;
+post_id = $1;
 
-SELECT * FROM puns;
+SELECT * FROM posts;
