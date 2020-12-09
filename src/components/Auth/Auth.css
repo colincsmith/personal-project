@@ -29,6 +29,13 @@ body{
     box-shadow: 10px 15px 10px 5px rgba(0, 0, 0, 0.425);
 }
 
+@media screen and (max-width: 375px){
+    .login{
+        width: 250px;
+        height: 50vh;
+    }
+}
+
 .auth-greeting{
     width: 100%;
     font-size: 35px;

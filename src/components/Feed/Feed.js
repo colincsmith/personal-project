@@ -44,6 +44,20 @@ class Feed extends Component{
         }
     }
 
+    deletePost = (postId) => {
+        
+        axios.delete(`/post/${postId}`)
+            .then(() => {
+                this.getAllPosts()
+            })
+            .catch(err => {
+                console.log(err)
+            })
+            // if(response === "You did not create this post."){
+            //     alert(response)
+            // }
+    }
+
     render(){
         const mappedPosts = this.state.posts.map((post, index) => {
             return(
@@ -54,6 +68,7 @@ class Feed extends Component{
                     <h2> {post.ski_name}</h2>
                     <h2 style={{color: 'crimson'}} >Thoughts </h2>
                     <h3>{post.content}</h3>
+                    <button onClick={() => this.deletePost(post.post_id)}> Delete Post </button>
                 </div>
             </div>
             )

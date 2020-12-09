@@ -73,17 +73,6 @@ module.exports = {
         res.status(200).send(posts)
     },
 
-    getOnePost: async (req, res) => {
-        const db = req.app.get("db")
-        const {id} = req.params
-        const [post] = await db.posts.get_one_post(+id)
-        if(post){
-            res.status(200).send(post)
-        } else {
-            res.status(400).send('could not find anything')
-        }
-    },
-
     addPost: async (req, res) => {
         const db = req.app.get('db')
         const {userId} = req.session.user
@@ -103,5 +92,28 @@ module.exports = {
     },
 
     deletePost: async (req, res) => {
+        const db = req.app.get('db')
+        const {id} = req.params
+        // const {userId} = req.session.user
+        // const post = await db.get_post([id])
+        await db.delete_post([id])
+
+        res.sendStatus(200)
+        // if(userId != post[0].id){
+        //     return res.status(401).send("You did not create this post.")
+        // }
+        // else{
+        //     await db.delete_post([id])
+        //     return res.status(200).send(posts)
+        // }
+    },
+
+    getUserPosts: async (req, res) => {
+        const db = req.app.get('db')
+        const {user_id} = req.params
+
+        const post = await db.get_user_posts([user_id])
+        console.log(post)
+        return res.status(200).send(post)
     }
 }

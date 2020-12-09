@@ -40,9 +40,9 @@ app.get('/auth/me', ctrl.getMe)
 
 // post endpoints
 app.get('/feed/posts', ctrl.getAllPosts)
-app.get('/feed/post', ctrl.getOnePost)
 app.post('/post/form', ctrl.addPost)
 app.put('/post/:id', ctrl.editPost)
 app.delete('/post/:id', ctrl.deletePost)
+app.get('/posts/:user_id', ctrl.getUserPosts)
 
 app.listen(SERVER_PORT, () => console.log(`server listening on port ${SERVER_PORT}`))
