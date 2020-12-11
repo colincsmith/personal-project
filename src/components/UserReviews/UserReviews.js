@@ -16,6 +16,7 @@ class UserReviews extends Component{
         this.getUserPosts()
     }
 
+    //# function for getting only the posts that the user created and posted.
     getUserPosts = async () => {
         try{
             const post = await axios.get(`/posts/${this.props.user.id}`)
@@ -31,7 +32,7 @@ class UserReviews extends Component{
         const mappedPosts = this.state.posts.map((post) => {
             return (
                 
-            <div key={post.user_id} className='post-container'>
+            <div className='post-container'>
                 <img alt='skis' src={post.img}/>
                     <h1 style={{color: 'crimson'}} >Name of Skis: </h1>
                     <h2> {post.ski_name}</h2>

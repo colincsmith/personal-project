@@ -28,26 +28,26 @@
     }
 }
 
-.greeting{
+.delete-button{
+    background-color: white;
+    color: black;
+}
+
+.delete-button:hover{
+    background-color: crimson;
     color: white;
 }
 
-.greeting-container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.edit-input{
     background-color: black;
-    height: 60px;
-    width: 25%;
-    position: fixed;
-    right: 5px;
-    bottom: 5px;
+    color: white;
+    height: 30px;
+    width: 100px;
+    transition: 1s;
 }
 
-@media screen and (max-width: 375px){
-    .greeting-container{
-        width: 0;
-        height: 0;
-        font-size: 0%;
-    }
+.edit-input:hover{
+    background-color: white;
+    color: black;
+    width: 150px;
 }

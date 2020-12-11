@@ -58,12 +58,15 @@ module.exports = {
     },
 
     getMe: async (req, res) => {
-        const {user_id} = req.session.user
+        const {userId} = req.session.user
 
         const db = req.app.get('db')
 
-        const me = await db.get_me([user_id])
-        return res.status(200).send(me)
+        const [me] = await db.get_me([userId])
+        return res.status(200).send({
+            id: me.user_id,
+            username: me.username
+        })
     },
 
     //#post controller
@@ -77,9 +80,10 @@ module.exports = {
         const db = req.app.get('db')
         const {userId} = req.session.user
         const {img, ski_name, content} = req.body
+        const user_id = userId
         
         try{
-        const newPost = await db.add_post([img, ski_name, content, userId])
+        const newPost = await db.add_post([img, ski_name, content, user_id])
         return res.status(200).send(newPost)
         } catch(err) {
             console.log('cannot add review', err)
@@ -88,7 +92,13 @@ module.exports = {
     },
 
     editPost: async (req, res) => {
+        const db = req.app.get('db')
+        const {id} = req.params
+        const {content} = req.body
+
+        await db.edit_post([id, content])
         
+        res.sendStatus(200)
     },
 
     deletePost: async (req, res) => {

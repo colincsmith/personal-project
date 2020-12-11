@@ -16,24 +16,17 @@ export const getUser = (user) => {
     }
 }
 
-export const updateUser = (user) => {
-    return {
-        type: UPDATE_USER,
-        payload: {user}
-    }
-}
+
 
 export default function(state = initialState, action){
     switch(action.type){
         case GET_USER:
+            console.log(action)
             return {
                 ...state,
                 user: action.payload
             }
-            case UPDATE_USER:
-                return{
-                    user: action.payload.user
-                }
+            
         default:
             return state
     }

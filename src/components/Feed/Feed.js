@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import './Feed.css'
-import {updateUser} from '../../redux/reducer'
 import { connect } from 'react-redux'
 
 class Feed extends Component{
@@ -13,21 +12,17 @@ class Feed extends Component{
         }
     }
 
-    getMe = async () => {
-        try{
-            const me = await axios.get('/auth/me')
-            this.props.updateUser(me.user.username)
-        } catch(err){
-            alert(err)
-        }
+    handleChange = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
     }
 
     componentDidMount(){
         this.getAllPosts()
     }
 
-    
-
+    //# function for getting all my posts to show up in the Feed.
     getAllPosts = async () => {
         try{
             const posts = await axios.get(`/feed/posts`)
@@ -40,6 +35,7 @@ class Feed extends Component{
         }
     }
 
+    //# function for deleting posts off of Feed.
     deletePost = (postId) => {
         
         axios.delete(`/post/${postId}`)
@@ -54,6 +50,17 @@ class Feed extends Component{
             // }
     }
 
+    editPost = (postId, content) => {
+        axios.put(`/post/${postId}`, {content})
+            .then(() => {
+                this.getAllPosts()
+            })
+            .catch(err => {
+                console.log('hello', err)
+            })
+    }
+    
+
     render(){
         const mappedPosts = this.state.posts.map((post, index) => {
             return(
@@ -64,7 +71,9 @@ class Feed extends Component{
                         <h2> {post.ski_name}</h2>
                         <h2 style={{color: 'crimson'}} >Thoughts </h2>
                         <h3>{post.content}</h3>
-                        <button onClick={() => this.deletePost(post.post_id)}> Delete Post </button>
+                        <button className='delete-button' onClick={() => this.deletePost(post.post_id)}>X Delete Post X</button>
+                        <input className='edit-input' name='content' onChange={this.handleChange} placeholder='edit review...'/>
+                        <button className='edit-button' onClick={() => this.editPost(post.post_id, this.state.content)}> Edit Post </button>
                     </div>
                 </div>
             )
@@ -72,11 +81,7 @@ class Feed extends Component{
         return(
             <div>
                 {mappedPosts}
-                <div className='greeting-container'>
-                <h3 className='greeting'> Take a look at your feed, {this.props.user.username}!</h3>
-                </div>
             </div>
-            
         )
     }
 }
@@ -86,4 +91,4 @@ function mapStateToProps(state){
 }
 
 
-export default connect(mapStateToProps, {updateUser})(Feed)
+export default connect(mapStateToProps)(Feed)
