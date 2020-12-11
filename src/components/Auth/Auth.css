@@ -81,7 +81,7 @@ body{
 }
 
 .username-input[type=text] {
-    width: 45%;
+    width: 35%;
     transition: width 0.4s ease-in-out;
     margin-top: 10px;
     height: 50px;
@@ -93,7 +93,7 @@ body{
 }
 
 .password-input[type=password] {
-    width: 45%;
+    width: 35%;
     transition: width 0.4s ease-in-out;
     margin-top: 40px;
     margin-bottom: 30px;

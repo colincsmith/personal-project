@@ -113,7 +113,6 @@ module.exports = {
         const {user_id} = req.params
 
         const post = await db.get_user_posts([user_id])
-        console.log(post)
         return res.status(200).send(post)
     }
 }

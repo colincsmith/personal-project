@@ -16,14 +16,10 @@ class Feed extends Component{
     getMe = async () => {
         try{
             const me = await axios.get('/auth/me')
-            this.props.updateUser(me.data[0].username)
+            this.props.updateUser(me.user.username)
         } catch(err){
             alert(err)
         }
-    }
-
-    handleSearch = () => {
-        this.getAllPosts()
     }
 
     componentDidMount(){
@@ -61,23 +57,23 @@ class Feed extends Component{
     render(){
         const mappedPosts = this.state.posts.map((post, index) => {
             return(
-            <div className='container'>
-                <div className='post-container' key={index} >
-                    <img className='post-image' alt='skis' src={post.img}/>
-                    <h1 style={{color: 'crimson'}} >Name of Skis: </h1>
-                    <h2> {post.ski_name}</h2>
-                    <h2 style={{color: 'crimson'}} >Thoughts </h2>
-                    <h3>{post.content}</h3>
-                    <button onClick={() => this.deletePost(post.post_id)}> Delete Post </button>
+                <div className='container'>
+                    <div className='post-container' key={index} >
+                        <img className='post-image' alt='skis' src={post.img}/>
+                        <h1 style={{color: 'crimson'}} >Name of Skis: </h1>
+                        <h2> {post.ski_name}</h2>
+                        <h2 style={{color: 'crimson'}} >Thoughts </h2>
+                        <h3>{post.content}</h3>
+                        <button onClick={() => this.deletePost(post.post_id)}> Delete Post </button>
+                    </div>
                 </div>
-            </div>
             )
         })
         return(
             <div>
                 {mappedPosts}
                 <div className='greeting-container'>
-                <h3 className='greeting'> Take a look at your feed, {this.props.username}!</h3>
+                <h3 className='greeting'> Take a look at your feed, {this.props.user.username}!</h3>
                 </div>
             </div>
             
@@ -86,9 +82,7 @@ class Feed extends Component{
 }
 
 function mapStateToProps(state){
-    return{
-        username: state.username
-    }
+    return state
 }
 
 

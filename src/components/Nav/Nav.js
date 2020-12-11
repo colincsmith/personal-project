@@ -1,9 +1,10 @@
-import React, {useState} from 'react'
+import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import './Nav.css'
 
-const Nav = () => {
-    const [state, setState] = useState(0)
+
+class Nav extends Component{
+    render(){
         return(
             <header className='nav'>
                 <ul className='links'>
@@ -14,6 +15,7 @@ const Nav = () => {
                 </ul>
             </header>
         )
+    }
 }
 
 export default Nav

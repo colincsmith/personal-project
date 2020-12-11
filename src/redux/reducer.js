@@ -1,21 +1,25 @@
 const initialState = {
-    username: ''
+    user: {},
+    img: '',
+    ski_name: '',
+    content: '',
+    skis: []
 }
 
 const GET_USER = "GET_USER"
 const UPDATE_USER = "UPDATE_USER"
 
-export const getUser = (user_id, username) => {
+export const getUser = (user) => {
     return{
         type: GET_USER,
-        payload: {user_id, username}
+        payload: user
     }
 }
 
-export const updateUser = (username) => {
+export const updateUser = (user) => {
     return {
         type: UPDATE_USER,
-        payload: {username}
+        payload: {user}
     }
 }
 
@@ -23,12 +27,12 @@ export default function(state = initialState, action){
     switch(action.type){
         case GET_USER:
             return {
-                id: action.payload.user_id,
-                username: action.payload.username
+                ...state,
+                user: action.payload
             }
             case UPDATE_USER:
                 return{
-                    username: action.payload.username
+                    user: action.payload.user
                 }
         default:
             return state

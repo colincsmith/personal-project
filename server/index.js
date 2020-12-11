@@ -31,14 +31,14 @@ massive({
     console.log('database connected and functioning smoothly')
 }).catch(err => console.log(err))
 
-// user endpoints
+//# user endpoints
 app.get('/auth/user', checkUser, ctrl.getUser)
 app.post('/auth/register', ctrl.register)
 app.post('/auth/login', ctrl.login)
 app.post('/auth/logout', ctrl.logout)
 app.get('/auth/me', ctrl.getMe)
 
-// post endpoints
+//# post endpoints
 app.get('/feed/posts', ctrl.getAllPosts)
 app.post('/post/form', ctrl.addPost)
 app.put('/post/:id', ctrl.editPost)
