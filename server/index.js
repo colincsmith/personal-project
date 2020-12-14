@@ -6,11 +6,11 @@ const session = require('express-session')
 
 const {SESSION_SECRET, SERVER_PORT, CONNECTION_STRING} = process.env
 const ctrl = require('./controllers/controller')
-const { checkUser } = require('./controllers/middleware')
 
 const app = express()
 
 app.use(express.json())
+app.use(express.static(`${__dirname}/../build`))
 
 app.use(session({
     resave: false,
@@ -44,5 +44,10 @@ app.post('/post/form', ctrl.addPost)
 app.put('/post/:id', ctrl.editPost)
 app.delete('/post/:id', ctrl.deletePost)
 app.get('/posts/:user_id', ctrl.getUserPosts)
+
+//# for hosting
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../build/index.html'))
+  })
 
 app.listen(SERVER_PORT, () => console.log(`server listening on port ${SERVER_PORT}`))
