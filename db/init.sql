@@ -21,3 +21,9 @@ body TEXT,
 user_id INT REFERENCES users(user_id),
 post_id INT REFERENCES posts(post_id)
 );
+
+CREATE TABLE email
+(
+email_id SERIAL PRIMARY KEY,
+email_input VARCHAR(100)
+);

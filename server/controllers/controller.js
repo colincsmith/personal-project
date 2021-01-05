@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt')
+const nodemailer = require('nodemailer')
 
 module.exports = {
     //# auth controllers
@@ -124,5 +125,25 @@ module.exports = {
 
         const post = await db.get_user_posts([user_id])
         return res.status(200).send(post)
+    },
+
+    emailer: async (req, res) => {
+        const {email} = req.body
+        let transporter = nodemailer.createTransport({
+            service: 'outlook', 
+            auth: {
+                user: 'writers___block@outlook.com',
+                pass: 'Writersblock$'
+            }
+        })
+        const msg = {
+            from: 'writers___block@outlook.com',
+            to: `${email}`,
+            subject: 'Welcome To Ski Review!',
+            text: 'Thanks for Reviewing your planks with us!'
+        }
+        const info = await transporter.sendMail(msg)
+        console.log('message sent', info.messageId)
+        res.status(200).send('email sent')
     }
 }

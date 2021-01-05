@@ -8,7 +8,8 @@ class UserReviews extends Component{
 
         this.state = {
             userId: null,
-            posts: []
+            posts: [],
+            email: ''
         }
     }
 
@@ -27,11 +28,21 @@ class UserReviews extends Component{
             console.log(err)
         }
     }
+
+    handleEmail = (e) => {
+        this.setState({
+            email: e.target.value
+        })
+    }
+
+    addEmail = async () => {
+        await axios.post('/email', {email: this.state.email})
+    }
     
     render(){
         const mappedPosts = this.state.posts.map((post) => {
             return (
-                
+            
             <div className='post-container'>
                 <img alt='skis' src={post.img}/>
                     <h1 style={{color: 'crimson'}} >Name of Skis: </h1>
@@ -42,8 +53,10 @@ class UserReviews extends Component{
             )
         })
         return (
-            <div>
+            <div className='below-header'>
                 {mappedPosts}
+                <input onChange={this.handleEmail} />
+                <button onClick={this.addEmail}> Add your email </button>
             </div>
         )
     }

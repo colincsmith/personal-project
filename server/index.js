@@ -45,6 +45,9 @@ app.put('/post/:id', ctrl.editPost)
 app.delete('/post/:id', ctrl.deletePost)
 app.get('/posts/:user_id', ctrl.getUserPosts)
 
+app.post('/email', ctrl.emailer)
+
+
 //# for hosting
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../build/index.html'))
